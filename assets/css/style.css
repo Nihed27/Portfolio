@@ -319,3 +319,65 @@ section { position: relative; }
   .edu { grid-template-columns: 1fr; }
   .layer:nth-child(n) { margin-left: 0; }
 }
+
+/* ==========================================================
+   JOURNEY — sticky story scroll
+   ========================================================== */
+.story { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(32px, 6vw, 90px); }
+.story-stage { position: relative; }
+.stage-card {
+  position: sticky; top: 110px;
+  padding: 26px; border-radius: 24px;
+  background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.stage-card::before {
+  content: ""; position: absolute; inset: -40% -40% auto auto; width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-soft), transparent 70%); pointer-events: none;
+}
+.stage-top { font-size: 12px; color: var(--muted); letter-spacing: .1em; }
+.stage-top span:first-child { color: var(--accent); }
+.stage-art { height: 200px; margin: 18px 0 8px; color: var(--ink-2); display: grid; place-items: center; }
+.stage-art svg { width: 100%; height: 100%; max-width: 300px; animation: artIn .7s var(--ease); }
+@keyframes artIn { from { opacity: 0; transform: translateY(12px) scale(.96); } to { opacity: 1; transform: none; } }
+.art-accent { stroke: var(--accent); }
+.art-signal { stroke: var(--signal); }
+.art-fill-accent { fill: var(--accent); }
+.art-fill-signal { fill: var(--signal); }
+.art-accent, .art-signal { stroke-dasharray: 400; animation: draw 2.4s var(--ease) both; }
+rect.art-accent, rect.art-signal { animation: none; }
+@keyframes draw { from { stroke-dashoffset: 400; } to { stroke-dashoffset: 0; } }
+.stage-year { font-size: clamp(64px, 8vw, 104px); line-height: .9; }
+.stage-co { margin-top: 6px; color: var(--muted); font-size: 15px; min-height: 24px; }
+.stage-bar { margin-top: 22px; height: 3px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.stage-bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--signal)); transition: width .6s var(--ease); }
+
+.story-steps { list-style: none; margin: 0; padding: 0; position: relative; }
+.story-steps::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
+.step { position: relative; padding: 0 0 clamp(64px, 12vh, 120px) 40px; opacity: .38; transition: opacity .5s var(--ease); }
+.step:last-child { padding-bottom: 0; }
+.step.active { opacity: 1; }
+.step::before {
+  content: ""; position: absolute; left: 0; top: 6px; width: 15px; height: 15px; border-radius: 50%;
+  background: var(--paper); border: 2px solid var(--line); transition: border-color .3s, background .3s, box-shadow .3s;
+}
+.step.active::before { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 0 6px var(--accent-soft); }
+.step-meta { font-family: var(--mono); font-size: 12px; color: var(--signal); letter-spacing: .06em; text-transform: uppercase; }
+.step h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.08; margin: 8px 0 6px; letter-spacing: -.01em; }
+.step-role { color: var(--ink-2); font-weight: 500; margin: 0 0 14px; }
+.step ul { margin: 0 0 16px; padding: 0; list-style: none; }
+.step li { position: relative; padding-left: 20px; color: var(--ink-2); margin-bottom: 8px; }
+.step li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-family: var(--mono); font-size: 11.5px; padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--ink-2); background: var(--card);
+}
+.step-link { display: inline-flex; gap: 6px; margin-top: 14px; font-size: 14px; color: var(--accent); text-decoration: none; font-weight: 500; }
+.step-link:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .story { grid-template-columns: 1fr; }
+  .story-stage { display: none; }
+  .step { opacity: 1; padding-bottom: 56px; }
+}

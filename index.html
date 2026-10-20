@@ -147,12 +147,35 @@
       </div>
     </section>
     <!-- JOURNEY -->
+    <section id="journey" class="journey">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">02 — <span data-i18n="journey.eyebrow">Parcours</span></span>
+          <h2 class="display reveal" data-delay="1" data-i18n-html="journey.title">Six stages, <em>une même logique.</em></h2>
+          <p class="reveal" data-delay="2" data-i18n="journey.lead">Des réseaux télécoms à l'IA embarquée : chaque expérience a ajouté une couche à la précédente.</p>
+        </div>
+
+        <div class="story">
+          <aside class="story-stage" aria-hidden="true">
+            <div class="stage-card">
+              <div class="stage-top mono"><span id="stageIdx">01</span> / <span id="stageTotal">06</span></div>
+              <div class="stage-art" id="stageArt"></div>
+              <div class="stage-year display" id="stageYear">2026</div>
+              <div class="stage-co" id="stageCo"></div>
+              <div class="stage-bar"><span id="stageBar"></span></div>
+            </div>
+          </aside>
+          <ol class="story-steps" id="journeyList"></ol>
+        </div>
+      </div>
+    </section>
     <!-- PROJECTS -->
     <!-- SKILLS -->
     <!-- CONTACT -->
   </main>
 
   <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

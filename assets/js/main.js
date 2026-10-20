@@ -190,6 +190,44 @@
     }).observe(layers);
   }
 
+  /* ---------- Journey (sticky story scroll) ---------- */
+  const jl = $("#journeyList");
+  const L = () => document.documentElement.lang === "en" ? "en" : "fr";
+  const place = p => L() === "en" ? p.replace("Tunisie", "Tunisia") : p;
+  let activeStep = 0;
+  const setStage = i => {
+    const j = window.JOURNEY[i]; if (!j) return;
+    activeStep = i;
+    $$(".step", jl).forEach((s, k) => s.classList.toggle("active", k === i));
+    $("#stageIdx").textContent = String(i + 1).padStart(2, "0");
+    $("#stageYear").textContent = j.year;
+    $("#stageCo").textContent = j.co + " · " + place(j.place);
+    $("#stageBar").style.width = ((i + 1) / window.JOURNEY.length) * 100 + "%";
+    const art = $("#stageArt");
+    if (art.dataset.k !== j.art) { art.dataset.k = j.art; art.innerHTML = window.ART[j.art]; }
+  };
+  const renderJourney = () => {
+    if (!jl) return;
+    const lg = L();
+    $("#stageTotal").textContent = String(window.JOURNEY.length).padStart(2, "0");
+    jl.innerHTML = window.JOURNEY.map((j, i) => `
+      <li class="step" data-i="${i}">
+        <div class="step-meta">${j.year} · ${place(j.place)}</div>
+        <h3>${j.co}</h3>
+        <p class="step-role">${j.role[lg]}</p>
+        <ul>${j.points[lg].map(p => `<li>${p}</li>`).join("")}</ul>
+        <div class="tags">${j.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+        ${j.link ? `<a class="step-link" href="${j.link}" target="_blank" rel="noopener">GitHub ↗</a>` : ""}
+      </li>`).join("");
+    const so2 = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) setStage(+e.target.dataset.i); });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    $$(".step", jl).forEach(s => so2.observe(s));
+    setStage(activeStep);
+  };
+  renderJourney();
+  document.addEventListener("langchange", renderJourney);
+
   /* ---------- Reveal ---------- */
   const ro = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); ro.unobserve(e.target); } });

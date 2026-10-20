@@ -28,7 +28,11 @@ window.I18N = {
     "about.s1": "major de promo en licence",
     "about.s2": "classement en cycle ingénieur",
     "about.s3": "stages en entreprise",
-    "about.s4": "PFE licence — mention Excellent"
+    "about.s4": "PFE licence — mention Excellent",
+
+    "journey.eyebrow": "Parcours",
+    "journey.title": "Six stages, <em>une même logique.</em>",
+    "journey.lead": "Des réseaux télécoms à l'IA embarquée : chaque expérience a ajouté une couche à la précédente."
   },
   en: {
     "nav.about": "About",
@@ -57,7 +61,11 @@ window.I18N = {
     "about.s1": "times top of class (B.Sc.)",
     "about.s2": "rank in engineering class",
     "about.s3": "industry internships",
-    "about.s4": "B.Sc. thesis — highest honours"
+    "about.s4": "B.Sc. thesis — highest honours",
+
+    "journey.eyebrow": "Journey",
+    "journey.title": "Six internships, <em>one thread.</em>",
+    "journey.lead": "From telecom networks to embedded AI: each experience added a layer on top of the previous one."
   }
 };
 

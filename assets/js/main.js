@@ -52,6 +52,110 @@
     sections.forEach(s => so.observe(s));
   }
 
+  /* ---------- Typed roles ---------- */
+  const typed = $("#typed");
+  if (typed) {
+    let i = 0, ch = 0, del = false, timer;
+    const roles = () => window.I18N[document.documentElement.lang]["hero.roles"];
+    const tick = () => {
+      const r = roles()[i % roles().length];
+      ch += del ? -1 : 1;
+      typed.textContent = r.slice(0, ch);
+      let d = del ? 28 : 60;
+      if (!del && ch === r.length) { del = true; d = 1700; }
+      else if (del && ch === 0) { del = false; i++; d = 300; }
+      timer = setTimeout(tick, d);
+    };
+    tick();
+    document.addEventListener("langchange", () => { clearTimeout(timer); ch = 0; del = false; tick(); });
+  }
+
+  /* ---------- LoRa chirp oscilloscope ----------
+     A LoRa symbol is a linear frequency sweep ("chirp") that wraps around.
+     Higher spreading factor (SF) = longer, slower chirps. Top: time-domain
+     waveform. Bottom: waterfall (frequency vs time) showing the sawtooth. */
+  const cv = $("#scope");
+  if (cv) {
+    const ctx = cv.getContext("2d");
+    let W, H, dpr, sf = 7, targetSf = 7, t = 0, visible = true;
+    const sfEl = $("#sfVal");
+    const resize = () => {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = W * dpr; cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize(); addEventListener("resize", resize);
+    const setFromX = x => {
+      const r = cv.getBoundingClientRect();
+      targetSf = 7 + Math.round(((x - r.left) / r.width) * 5);
+      targetSf = Math.max(7, Math.min(12, targetSf));
+    };
+    cv.addEventListener("pointermove", e => setFromX(e.clientX));
+    cv.addEventListener("pointerleave", () => { targetSf = 7; });
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(cv);
+
+    const draw = () => {
+      requestAnimationFrame(draw);
+      if (!visible) return;
+      t += 1 / 60;
+      sf += (targetSf - sf) * 0.08;
+      if (sfEl) sfEl.textContent = Math.round(sf);
+      ctx.clearRect(0, 0, W, H);
+
+      // grid
+      ctx.strokeStyle = "rgba(255,255,255,0.05)"; ctx.lineWidth = 1;
+      for (let x = 0; x < W; x += 40) { ctx.beginPath(); ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, H); ctx.stroke(); }
+      for (let y = 0; y < H; y += 40) { ctx.beginPath(); ctx.moveTo(0, y + .5); ctx.lineTo(W, y + .5); ctx.stroke(); }
+
+      const split = H * 0.56;
+      const symW = 40 * Math.pow(2, (sf - 7) * 0.45) + 60;   // pixels per symbol
+      const speed = 70;                                        // px per second scroll
+      const off = t * speed;
+
+      // --- waveform (top)
+      const mid = split / 2, amp = split * 0.32;
+      const grad = ctx.createLinearGradient(0, 0, W, 0);
+      grad.addColorStop(0, "rgba(125,155,255,0.15)");
+      grad.addColorStop(0.5, "#7d9bff");
+      grad.addColorStop(1, "#ff8a5c");
+      ctx.strokeStyle = grad; ctx.lineWidth = 1.6; ctx.beginPath();
+      const fMax = 0.5 * (11 / sf);
+      for (let x = 0; x <= W; x += 1) {
+        const u = (x + off) % symW;                         // px inside the current symbol
+        // phase = integral of linearly rising frequency -> scrolls smoothly
+        const phase = 0.05 * u + (fMax * u * u) / (2 * symW);
+        const env = 0.85 + 0.15 * Math.sin((x + off) * 0.01);
+        const y = mid + Math.sin(phase) * amp * env;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // divider
+      ctx.strokeStyle = "rgba(255,255,255,0.08)";
+      ctx.beginPath(); ctx.moveTo(0, split + .5); ctx.lineTo(W, split + .5); ctx.stroke();
+
+      // --- waterfall (bottom): sawtooth chirps
+      const top = split + 14, bot = H - 14, hh = bot - top;
+      ctx.lineWidth = 2.2; ctx.lineCap = "round";
+      const start = -((off) % symW);
+      for (let x0 = start; x0 < W; x0 += symW) {
+        const g = ctx.createLinearGradient(x0, bot, x0 + symW, top);
+        g.addColorStop(0, "rgba(125,155,255,0.25)");
+        g.addColorStop(1, "rgba(255,138,92,0.95)");
+        ctx.strokeStyle = g;
+        ctx.beginPath(); ctx.moveTo(x0, bot); ctx.lineTo(x0 + symW - 4, top); ctx.stroke();
+        ctx.fillStyle = "rgba(255,138,92,0.9)";
+        ctx.beginPath(); ctx.arc(x0 + symW - 4, top, 2.4, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.fillStyle = "rgba(200,210,235,0.45)";
+      ctx.font = "11px 'JetBrains Mono', monospace";
+      ctx.fillText("freq ↑", 10, top + 10);
+      ctx.fillText("signal", 10, 18);
+    };
+    draw();
+  }
+
   /* ---------- Reveal ---------- */
   const ro = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); ro.unobserve(e.target); } });

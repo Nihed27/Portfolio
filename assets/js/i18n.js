@@ -44,7 +44,28 @@ window.I18N = {
     "v.drl.byz": "nœud byzantin",
     "v.drl.cost": "coût total (normalisé)",
     "v.drl.b1": "Périodique", "v.drl.b2": "Seuil",
-    "v.rag.q": "Question", "v.rag.a": "Réponse sourcée"
+    "v.rag.q": "Question", "v.rag.a": "Réponse sourcée",
+
+    "skills.eyebrow": "Compétences",
+    "skills.title": "La boîte <em>à outils.</em>",
+    "skills.lead": "Vous pouvez aussi l'explorer en ligne de commande : tapez help dans le terminal.",
+    "skills.ai": "IA & données", "skills.emb": "Embarqué & IoT", "skills.web": "Web & mobile", "skills.sec": "Sécurité & réseaux", "skills.lang": "Langages & outils",
+    "skills.certs": "Certifications", "skills.ucar": "Université de Carthage", "skills.peec": "Statut national d'étudiant entrepreneur (PEEC)",
+    "skills.langs": "Langues", "skills.ar": "Arabe", "skills.fr": "Français", "skills.en": "Anglais", "skills.native": "natif",
+    "skills.acts": "Engagement", "skills.a1": "Trésorière", "skills.a2": "Vice-présidente", "skills.a3": "Bénévole",
+    "term.ph": "tapez help",
+    "term.welcome": "Bienvenue ! Tapez <span class='hl'>help</span> pour voir les commandes.",
+    "term.help": "Commandes : whoami · skills · projects · stack &lt;mot&gt; · contact · lang en|fr · theme · clear",
+    "term.whoami": "Nihed Missar — élève ingénieure Software & AI (ENICarthage, 2027).\nIA · embarqué · IoT · full-stack. Basée à Bizerte, Tunisie.",
+    "term.notfound": "commande introuvable : ",
+    "term.stackno": "Pas encore dans ma boîte à outils… mais j'apprends vite.",
+    "term.stackyes": "✓ oui, utilisé dans : ",
+    "term.contact": "e-mail : missarnihed167@gmail.com",
+
+    "contact.title": "Construisons <em>quelque chose.</em>",
+    "contact.lead": "Je cherche un stage de fin d'études de 6 mois à partir de février 2027, en France, en Europe ou ailleurs. Un sujet en IA, en données ou en systèmes intelligents ? Écrivez-moi.",
+    "contact.copy": "Copier", "contact.copied": "Copié ✓", "contact.mail": "Envoyer un e-mail", "contact.loc": "Bizerte, Tunisie",
+    "footer.made": "Fait main — HTML, CSS & JS, sans framework.", "footer.top": "Retour en haut ↑"
   },
   en: {
     "nav.about": "About",
@@ -89,7 +110,28 @@ window.I18N = {
     "v.drl.byz": "Byzantine node",
     "v.drl.cost": "total cost (normalised)",
     "v.drl.b1": "Periodic", "v.drl.b2": "Threshold",
-    "v.rag.q": "Question", "v.rag.a": "Sourced answer"
+    "v.rag.q": "Question", "v.rag.a": "Sourced answer",
+
+    "skills.eyebrow": "Skills",
+    "skills.title": "The <em>toolbox.</em>",
+    "skills.lead": "You can also explore it from the command line: type help in the terminal.",
+    "skills.ai": "AI & data", "skills.emb": "Embedded & IoT", "skills.web": "Web & mobile", "skills.sec": "Security & networks", "skills.lang": "Languages & tools",
+    "skills.certs": "Certifications", "skills.ucar": "University of Carthage", "skills.peec": "National student-entrepreneur status (PEEC)",
+    "skills.langs": "Languages", "skills.ar": "Arabic", "skills.fr": "French", "skills.en": "English", "skills.native": "native",
+    "skills.acts": "Involvement", "skills.a1": "Treasurer", "skills.a2": "Vice-president", "skills.a3": "Volunteer",
+    "term.ph": "type help",
+    "term.welcome": "Welcome! Type <span class='hl'>help</span> to see the commands.",
+    "term.help": "Commands: whoami · skills · projects · stack &lt;word&gt; · contact · lang en|fr · theme · clear",
+    "term.whoami": "Nihed Missar — Software & AI engineering student (ENICarthage, 2027).\nAI · embedded · IoT · full-stack. Based in Bizerte, Tunisia.",
+    "term.notfound": "command not found: ",
+    "term.stackno": "Not in my toolbox yet… but I learn fast.",
+    "term.stackyes": "✓ yes, used in: ",
+    "term.contact": "email: missarnihed167@gmail.com",
+
+    "contact.title": "Let's build <em>something.</em>",
+    "contact.lead": "I'm looking for a 6-month final-year internship starting February 2027 — in France, Europe or beyond. Working on AI, data or intelligent systems? Let's talk.",
+    "contact.copy": "Copy", "contact.copied": "Copied ✓", "contact.mail": "Send an email", "contact.loc": "Bizerte, Tunisia",
+    "footer.made": "Handmade — HTML, CSS & JS, no framework.", "footer.top": "Back to top ↑"
   }
 };
 

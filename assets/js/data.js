@@ -198,7 +198,7 @@ window.PROJECTS = [
     id: "taliv", cat: ["web"], icon: "phone",
     title: { fr: "TaLiv", en: "TaLiv" },
     desc: { fr: "Application Android offline-first de gestion de livraisons : suivi en temps réel, Google Maps, messagerie d'urgence.", en: "Offline-first Android delivery app: real-time tracking, Google Maps, emergency messaging." },
-    tags: ["Android (Java)", "Spring Boot", "SQLite", "Google Maps"]
+    tags: ["Android (Java)", "Spring Boot", "SQLite", "Google Maps"], repo: GH + "TaLiv"
   },
   {
     id: "pose", cat: ["ai", "web"], icon: "pose",

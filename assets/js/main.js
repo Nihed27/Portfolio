@@ -156,6 +156,40 @@
     draw();
   }
 
+  /* ---------- Count-up stats ---------- */
+  const co = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target, end = +el.dataset.count, t0 = performance.now(), dur = 1400;
+      const step = now => {
+        const p = Math.min(1, (now - t0) / dur), k = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(end * k);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      co.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  $$("[data-count]").forEach(el => co.observe(el));
+
+  /* ---------- Layers: a "packet" travels from hardware (L1) up to apps (L5) ---------- */
+  const layers = $("#layers");
+  if (layers) {
+    const items = [...layers.querySelectorAll(".layer")].reverse(); // L1 first
+    let k = 0, iv = null, hover = false;
+    layers.addEventListener("pointerenter", () => { hover = true; items.forEach(l => l.classList.remove("pulse")); });
+    layers.addEventListener("pointerleave", () => { hover = false; });
+    const run = () => {
+      if (hover) return;
+      items.forEach((l, i) => l.classList.toggle("pulse", i === k % items.length));
+      k++;
+    };
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !iv) iv = setInterval(run, 700);
+      if (!e.isIntersecting && iv) { clearInterval(iv); iv = null; }
+    }).observe(layers);
+  }
+
   /* ---------- Reveal ---------- */
   const ro = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); ro.unobserve(e.target); } });

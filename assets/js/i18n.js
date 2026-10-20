@@ -32,7 +32,19 @@ window.I18N = {
 
     "journey.eyebrow": "Parcours",
     "journey.title": "Six stages, <em>une même logique.</em>",
-    "journey.lead": "Des réseaux télécoms à l'IA embarquée : chaque expérience a ajouté une couche à la précédente."
+    "journey.lead": "Des réseaux télécoms à l'IA embarquée : chaque expérience a ajouté une couche à la précédente.",
+
+    "projects.eyebrow": "Projets",
+    "projects.title": "Le travail <em>derrière le CV.</em>",
+    "projects.lead": "Pas juste une liste : pour chaque projet, le problème, ce que j'ai construit, et le code.",
+    "projects.f.all": "Tous", "projects.f.ai": "IA & données", "projects.f.sec": "Sécurité & réseaux", "projects.f.web": "Web & mobile", "projects.f.emb": "Embarqué",
+    "projects.others": "Autres projets",
+    "projects.code": "Voir le code",
+    "projects.wip": "en cours",
+    "v.drl.byz": "nœud byzantin",
+    "v.drl.cost": "coût total (normalisé)",
+    "v.drl.b1": "Périodique", "v.drl.b2": "Seuil",
+    "v.rag.q": "Question", "v.rag.a": "Réponse sourcée"
   },
   en: {
     "nav.about": "About",
@@ -65,7 +77,19 @@ window.I18N = {
 
     "journey.eyebrow": "Journey",
     "journey.title": "Six internships, <em>one thread.</em>",
-    "journey.lead": "From telecom networks to embedded AI: each experience added a layer on top of the previous one."
+    "journey.lead": "From telecom networks to embedded AI: each experience added a layer on top of the previous one.",
+
+    "projects.eyebrow": "Projects",
+    "projects.title": "The work <em>behind the CV.</em>",
+    "projects.lead": "Not just a list: for each project, the problem, what I built, and the code.",
+    "projects.f.all": "All", "projects.f.ai": "AI & data", "projects.f.sec": "Security & networks", "projects.f.web": "Web & mobile", "projects.f.emb": "Embedded",
+    "projects.others": "More projects",
+    "projects.code": "View code",
+    "projects.wip": "in progress",
+    "v.drl.byz": "Byzantine node",
+    "v.drl.cost": "total cost (normalised)",
+    "v.drl.b1": "Periodic", "v.drl.b2": "Threshold",
+    "v.rag.q": "Question", "v.rag.a": "Sourced answer"
   }
 };
 

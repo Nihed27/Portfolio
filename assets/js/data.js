@@ -114,3 +114,110 @@ window.JOURNEY = [
 ];
 
 window.ART = ART;
+
+/* ---------------- Projects ---------------- */
+const GH = "https://github.com/Nihed27/";
+window.PROJECTS = [
+  {
+    id: "drl", featured: true, cat: ["ai", "sec"], visual: "drl",
+    title: { fr: "Renouvellement adaptatif des clés IoT", en: "Adaptive key refresh for IoT networks" },
+    kicker: { fr: "Deep Reinforcement Learning · Sécurité", en: "Deep Reinforcement Learning · Security" },
+    desc: {
+      fr: "Quand faut-il renouveler les clés cryptographiques d'un réseau de capteurs attaqué ? Trop souvent, ça coûte de l'énergie. Pas assez, et un nœud capturé compromet le réseau. J'ai entraîné un agent pour trancher.",
+      en: "When should a sensor network under attack refresh its cryptographic keys? Too often wastes energy; too rarely lets a captured node compromise the network. I trained an agent to decide."
+    },
+    points: {
+      fr: ["Simulation d'un réseau de capteurs : pré-distribution de clés, captures de nœuds, nœuds malveillants (byzantins)",
+           "Agent Double DQN qui décide quand renouveler les clés",
+           "Coût réduit d'environ 20 % face aux stratégies de référence"],
+      en: ["Simulated a sensor network: key pre-distribution, node capture, malicious (Byzantine) nodes",
+           "Double DQN agent deciding when to refresh keys",
+           "About 20% lower cost than baseline strategies"]
+    },
+    tags: ["Python", "PyTorch", "Double DQN", "IoT Security"],
+    repo: GH + "Adaptive-key-refresh-drl"
+  },
+  {
+    id: "plantdoc", featured: true, cat: ["ai"], visual: "plant",
+    title: { fr: "PlantDoc — détection de maladies des plantes", en: "PlantDoc — plant disease detection" },
+    kicker: { fr: "Vision par ordinateur · Edge AI", en: "Computer vision · Edge AI" },
+    desc: {
+      fr: "Un détecteur de maladies foliaires entraîné sur le dataset PlantDoc, pensé pour tourner sur du matériel modeste, là où sont les agriculteurs.",
+      en: "A leaf-disease detector trained on the PlantDoc dataset, designed to run on modest hardware — where farmers actually are."
+    },
+    points: {
+      fr: ["Fine-tuning de YOLOv8 sur PlantDoc", "Export ONNX pour un déploiement indépendant du framework", "Quantification INT8 pour réduire la taille et accélérer l'inférence"],
+      en: ["Fine-tuned YOLOv8 on PlantDoc", "ONNX export for framework-independent deployment", "INT8 quantisation for a smaller, faster model"]
+    },
+    tags: ["YOLOv8", "ONNX", "INT8", "Python"],
+    repo: GH + "plantdoc-yolov8-detection"
+  },
+  {
+    id: "rag", featured: true, cat: ["ai"], visual: "rag",
+    title: { fr: "Assistant RAG multi-agents de veille technologique", en: "Multi-agent RAG assistant for tech watch" },
+    kicker: { fr: "LLM · Agents · RAG", en: "LLM · Agents · RAG" },
+    desc: {
+      fr: "Plusieurs agents spécialisés coopèrent pour collecter, retrouver et synthétiser l'information technique, avec des réponses ancrées dans des sources.",
+      en: "Several specialised agents cooperate to collect, retrieve and summarise technical information, with answers grounded in sources."
+    },
+    points: {
+      fr: ["Orchestration des agents avec LangChain / LangGraph", "Recherche sémantique dans une base vectorielle ChromaDB", "API FastAPI, conteneurisée avec Docker"],
+      en: ["Agent orchestration with LangChain / LangGraph", "Semantic search over a ChromaDB vector store", "FastAPI service, containerised with Docker"]
+    },
+    tags: ["LangGraph", "LangChain", "ChromaDB", "FastAPI", "Docker"],
+    repo: GH + "rag-veille-tech"
+  },
+  {
+    id: "mail", featured: true, cat: ["sec"], visual: "totp",
+    title: { fr: "Serveur de messagerie sécurisé avec MFA", en: "Secure mail server with MFA" },
+    kicker: { fr: "Linux · Réseaux · Sécurité", en: "Linux · Networking · Security" },
+    desc: {
+      fr: "Un serveur mail complet déployé sous RHEL, avec chiffrement moderne et une authentification à deux facteurs, du serveur jusqu'au webmail.",
+      en: "A complete mail server deployed on RHEL, with modern encryption and two-factor authentication, from the server to the webmail."
+    },
+    points: {
+      fr: ["Postfix (SMTP), Dovecot (IMAP), Roundcube et MariaDB sous RHEL 9", "Transport chiffré en TLS 1.3", "Authentification multi-facteurs par codes TOTP"],
+      en: ["Postfix (SMTP), Dovecot (IMAP), Roundcube and MariaDB on RHEL 9", "TLS 1.3 encrypted transport", "Multi-factor authentication with TOTP codes"]
+    },
+    tags: ["Postfix", "Dovecot", "Roundcube", "MariaDB", "RHEL 9", "TLS 1.3"],
+    repo: GH + "mfa-postfix-dovecot-rhel9"
+  },
+  {
+    id: "interview", cat: ["ai", "web"], icon: "avatar",
+    title: { fr: "InterviewSim 3D", en: "InterviewSim 3D" },
+    desc: { fr: "Simulateur d'entretien propulsé par l'IA, avec un avatar 3D qui parle. En cours.", en: "AI-powered mock interview simulator with a 3D talking avatar. In progress." },
+    tags: ["LLM", "RAG", "Three.js", "Python"], repo: GH + "interview-sim", wip: true
+  },
+  {
+    id: "edukini", cat: ["web"], icon: "browser",
+    title: { fr: "EDUKINI", en: "EDUKINI" },
+    desc: { fr: "Plateforme full-stack d'orientation qui aide les étudiants de l'ENICarthage à choisir leur parcours.", en: "Full-stack guidance platform helping ENICarthage students choose their track." },
+    tags: ["Angular 19", "Spring Boot", "MySQL", "JWT", "Docker"], repo: GH + "EDUKINI"
+  },
+  {
+    id: "taliv", cat: ["web"], icon: "phone",
+    title: { fr: "TaLiv", en: "TaLiv" },
+    desc: { fr: "Application Android offline-first de gestion de livraisons : suivi en temps réel, Google Maps, messagerie d'urgence.", en: "Offline-first Android delivery app: real-time tracking, Google Maps, emergency messaging." },
+    tags: ["Android (Java)", "Spring Boot", "SQLite", "Google Maps"]
+  },
+  {
+    id: "pose", cat: ["ai", "web"], icon: "pose",
+    title: { fr: "Pose Estimation App", en: "Pose Estimation App" },
+    desc: { fr: "Détection de pose humaine en temps réel dans le navigateur : 17 points clés, squelette dessiné sur canvas, sans serveur.", en: "Real-time human pose detection in the browser: 17 keypoints, skeleton drawn on canvas, no backend." },
+    tags: ["React", "TensorFlow.js", "PoseNet"], repo: GH + "pose-estimation-app"
+  },
+  {
+    id: "kicad", cat: ["emb"], icon: "chip",
+    title: { fr: "Carte LoRa pour nanosatellite", en: "LoRa board for a nanosatellite" },
+    desc: { fr: "Carte de communication LoRa du nanosatellite éducatif ESAT, autour d'un STM32F4. PFE de licence, 19/20.", en: "LoRa communication board for the ESAT educational nanosatellite, built around an STM32F4. B.Sc. thesis, 19/20." },
+    tags: ["KiCad", "STM32F4", "LoRaWAN"], repo: GH + "Kicad"
+  }
+];
+
+window.ICONS = {
+  avatar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/><path d="M17 4l2-2M19 7h2"/></svg>`,
+  browser: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/><path d="M8 14l2 2 4-4"/></svg>`,
+  phone: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/><path d="M12 7a2.5 2.5 0 0 1 2.5 2.5C14.5 12 12 14 12 14s-2.5-2-2.5-4.5A2.5 2.5 0 0 1 12 7z"/></svg>`,
+  pose: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="4" r="2"/><path d="M12 6v7M7 9l5 1 5-3M12 13l-4 8M12 13l4 8"/></svg>`,
+  chip: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>`
+};

@@ -25,10 +25,6 @@ window.I18N = {
     "about.edu1": "Diplôme d'ingénieur en informatique",
     "about.edu2": "Licence en systèmes embarqués & IoT",
     "about.edu2s": "Faculté des Sciences de Bizerte",
-    "about.s1": "major de promo en licence",
-    "about.s2": "classement en cycle ingénieur",
-    "about.s3": "stages en entreprise",
-    "about.s4": "PFE licence — mention Excellent",
 
     "journey.eyebrow": "Parcours",
     "journey.title": "Six stages, <em>une même logique.</em>",
@@ -91,10 +87,6 @@ window.I18N = {
     "about.edu1": "Engineering degree in Computer Science",
     "about.edu2": "B.Sc. in Embedded Systems & IoT",
     "about.edu2s": "Faculty of Sciences of Bizerte",
-    "about.s1": "times top of class (B.Sc.)",
-    "about.s2": "rank in engineering class",
-    "about.s3": "industry internships",
-    "about.s4": "B.Sc. thesis — highest honours",
 
     "journey.eyebrow": "Journey",
     "journey.title": "Six internships, <em>one thread.</em>",
